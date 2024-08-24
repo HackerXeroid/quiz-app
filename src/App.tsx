@@ -3,7 +3,7 @@ import QuizSelector from "./components/QuizSelector";
 import QuestionCard from "./components/QuestionCard";
 import ProgressBar from "./components/ProgressBar";
 import ThemeToggle from "./components/ThemeToggle";
-import { Quiz, Question } from "./types";
+import { Quiz } from "./types";
 import quizzes from "./data/quizzes";
 import QuizResults from "./components/QuizResults";
 
@@ -39,7 +39,7 @@ const App: React.FC = () => {
     setQuizResults(null); // Reset results when a new quiz is selected
   };
 
-  const [userAnswers, setUserAnswers] = useState<{
+  const [_, setUserAnswers] = useState<{
     [key: number]: {
       answer: string | string[];
       isCorrect: boolean;

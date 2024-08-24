@@ -73,23 +73,12 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
     if (question.type === "multiple") {
       const isCorrect =
         JSON.stringify(selectedAnswers.sort()) ===
-        JSON.stringify(question.correctAnswer.sort());
+        JSON.stringify((question.correctAnswer as []).sort());
       onAnswer(selectedAnswers, isCorrect, isCorrect ? question.points : 0);
       setIsCorrect(isCorrect);
       setAnswered(true);
       setShowFeedback(true);
     }
-  };
-
-  const checkAnswer = (answers: string[]) => {
-    const correct = Array.isArray(question.correctAnswer)
-      ? JSON.stringify(answers.sort()) ===
-        JSON.stringify(question.correctAnswer.sort())
-      : answers[0] === question.correctAnswer;
-
-    setIsCorrect(correct);
-    setAnswered(true);
-    setShowFeedback(true);
   };
 
   const handleNextQuestion = () => {
